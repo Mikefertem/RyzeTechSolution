@@ -9,6 +9,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middlewares
 app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
 app.use(express.json());
 
@@ -16,14 +17,20 @@ app.use(express.json());
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: parseInt(process.env.SMTP_PORT),
-  secure: process.env.SMTP_SECURE === 'true',
+  secure: process.env.SMTP_SECURE === 'true', // true se for 465, false se for 587
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
 });
 
-// Rota para envio do formulário
+// Logs de debug
+console.log('📬 Config SMTP:');
+console.log('Host:', process.env.SMTP_HOST);
+console.log('Port:', process.env.SMTP_PORT);
+console.log('User:', process.env.SMTP_USER);
+
+// Rota de envio de e-mail
 app.post('/send', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -35,21 +42,29 @@ app.post('/send', async (req, res) => {
     await transporter.sendMail({
       from: process.env.FROM_EMAIL,
       to: process.env.TO_EMAIL,
-      subject: `Mensagem do site de ${name}`,
+      subject: `Nova mensagem do site de ${name}`,
       text: `Nome: ${name}\nEmail: ${email}\nMensagem:\n${message}`,
     });
+
+    console.log(`✅ E-mail enviado de ${name} (${email})`);
     res.json({ success: true, message: 'Mensagem enviada com sucesso!' });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error('❌ Erro ao enviar e-mail:', error);
     res.status(500).json({ error: 'Erro ao enviar a mensagem.' });
   }
 });
 
-// Apenas para testar se as variáveis estão sendo lidas
-console.log('SMTP_HOST:', process.env.SMTP_HOST);
-console.log('SMTP_PORT:', process.env.SMTP_PORT);
-console.log('SMTP_USER:', process.env.SMTP_USER);
+// Rota raiz
+app.get('/', (req, res) => {
+  res.send('🚀 Servidor ON! Use POST /send para enviar mensagens.');
+});
 
+// Rota de status
+app.get('/status', (req, res) => {
+  res.json({ status: 'online ✅', server: true, smtp: !!process.env.SMTP_HOST });
+});
+
+// Inicia o servidor
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`✅ Servidor rodando na porta ${PORT}`);
 });
