@@ -1,0 +1,192 @@
+:root{
+  --bg-1: #0f0433;
+  --bg-2: #3c1964;
+  --accent: #6fe6d1;
+  --accent-2: #78a6ff;
+  --glass: rgba(255,255,255,0.06);
+  --glass-2: rgba(255,255,255,0.04);
+  --text: #e9eef8;
+  --muted: #bfc8d8;
+  --radius: 12px;
+  --container: 1100px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Basic reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: radial-gradient(ellipse at 10% 10%, rgba(255,255,255,0.03), transparent 5%),
+              linear-gradient(180deg,var(--bg-1),var(--bg-2));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* Container */
+.container{
+  width: calc(100% - 40px);
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* Header */
+.site-header{
+  position: sticky;
+  top:0;
+  z-index:40;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(9,6,16,0.3), rgba(9,6,16,0.15));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0;
+}
+.logo{font-weight:700; color:var(--accent); text-decoration:none; font-size:1.1rem}
+.logo span{color:var(--accent-2)}
+
+/* Nav */
+.nav{display:flex; gap:18px; align-items:center}
+.nav a{color:var(--muted); text-decoration:none; font-weight:500; padding:6px 10px; border-radius:8px}
+.nav a:hover{color:var(--text); background:rgba(255,255,255,0.02)}
+
+.btn{border:0; cursor:pointer; padding:10px 14px; border-radius:10px; font-weight:600}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#03121a; box-shadow:0 6px 18px rgba(46,170,170,0.06)}
+.btn-outline{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.06)}
+.btn-ghost{background:transparent; color:var(--muted)}
+.btn-small{padding:6px 10px; font-size:0.9rem}
+.btn-whatsapp{display:inline-block; margin-top:12px; background:linear-gradient(90deg,#25D366,#128C7E); color:white; text-decoration:none}
+
+/* Hero */
+.hero{padding:56px 0; position:relative; overflow:hidden}
+.hero-inner{display:flex; gap:32px; align-items:center}
+.hero-left{flex:1; max-width:720px}
+.hero-right{width:360px}
+
+.hero h1{font-size:2.2rem; line-height:1.05; margin:0 0 12px; color: #eafcff}
+.hero h1 span{color:var(--accent)}
+.lead{color:var(--muted); margin-bottom:18px; max-width:60%}
+.hero-ctas{display:flex; gap:12px; margin-bottom:18px}
+.kpis{display:flex; gap:12px; list-style:none; padding:0; margin:8px 0 0}
+.kpis li{background:var(--glass); padding:10px 12px; border-radius:10px; color:var(--text); font-weight:600; display:flex; flex-direction:column; align-items:flex-start}
+.kpis li span{font-weight:400; color:var(--muted); font-size:0.85rem}
+
+/* Profile card */
+.profile-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  padding:16px; border-radius:14px; box-shadow: 0 6px 30px rgba(6,6,12,0.6);
+  display:flex; gap:12px; align-items:center;
+}
+.avatar{width:86px; height:86px; border-radius:12px; overflow:hidden; flex-shrink:0; border:2px solid rgba(255,255,255,0.04)}
+.avatar img{width:100%; height:100%; object-fit:cover; display:block}
+.profile-info h3{margin:0 0 6px}
+.profile-info p{margin:0; color:var(--muted); font-size:0.95rem}
+
+/* Mini cards */
+.mini-cards{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
+.mini{background:var(--glass); padding:8px 12px; border-radius:10px; font-weight:600; color:var(--text)}
+
+/* Sections */
+.section{padding:56px 0}
+.section h2{font-size:1.6rem; margin-bottom:6px}
+.section .subtitle{color:var(--muted); margin-bottom:18px}
+
+/* Services grid */
+.cards-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:18px; margin-top:18px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:14px; box-shadow:0 8px 30px rgba(4,4,10,0.5)}
+.card h4{margin:0 0 8px}
+.card p{color:var(--muted); margin:0 0 12px}
+.card .price{font-weight:700; margin-bottom:10px}
+.card-btn{display:inline-block; text-decoration:none; padding:8px 10px; border-radius:10px; background:rgba(255,255,255,0.03); color:var(--text)}
+
+/* About */
+.about-inner{display:flex; gap:24px; align-items:flex-start; justify-content:space-between}
+.about-text{flex:1; max-width:640px}
+.about-stats{display:flex; gap:16px; margin-top:12px; flex-wrap:wrap}
+.about-stats div{background:var(--glass); padding:12px 16px; border-radius:10px; min-width:120px; text-align:center}
+.about-cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; width:420px}
+
+/* Timeline */
+.timeline-wrap{position:relative; padding:30px 0}
+.timeline-line{position:absolute; left:50%; transform:translateX(-50%); width:6px; height:100%; background:linear-gradient(180deg,var(--accent),rgba(255,255,255,0.05)); border-radius:8px}
+.timeline-item{position:relative; width:46%; padding:14px 18px; margin-bottom:28px}
+.timeline-item.left{left:0; text-align:left}
+.timeline-item.right{left:54%; text-align:left}
+.timeline-item .circle{position:absolute; width:36px; height:36px; border-radius:50%; background:var(--accent); color:#021; display:flex; align-items:center; justify-content:center; top:8px; box-shadow:0 8px 20px rgba(0,0,0,0.4)}
+.timeline-item.left .circle{right:-18px}
+.timeline-item.right .circle{left:-18px}
+.timeline-item .card{background:var(--glass); padding:14px; border-radius:12px; color:var(--text)}
+
+/* Testimonials */
+.testimonials-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:18px}
+.testimonial{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:12px}
+.testimonial p{margin:0 0 8px}
+.testimonial cite{color:var(--muted); font-size:0.9rem}
+
+/* Contact */
+.contact-inner{display:flex; gap:28px; align-items:flex-start}
+.contact-left{flex:1; max-width:420px}
+.contact-form{flex:1; background:var(--glass); padding:18px; border-radius:12px}
+.contact-form label{display:block; margin-bottom:10px; color:var(--muted); font-size:0.9rem}
+.contact-form input, .contact-form select, .contact-form textarea{
+  width:100%; padding:10px 12px; margin-top:6px; border-radius:8px; border:1px solid rgba(255,255,255,0.03);
+  background:transparent; color:var(--text);
+}
+.form-actions{display:flex; gap:10px; margin-top:12px}
+.form-note{color:var(--muted); font-size:0.85rem; margin-top:10px}
+
+/* Footer */
+.site-footer{padding:28px 0; border-top:1px solid rgba(255,255,255,0.03); margin-top:20px}
+.footer-grid{display:grid; grid-template-columns:1fr repeat(2,180px); gap:18px}
+.credit{margin-top:12px; color:var(--muted); font-size:0.9rem}
+
+/* Bubbles background (decorative) */
+.bubbles::before, .bubbles::after{content:""; position:absolute; border-radius:50%; opacity:0.08}
+.bubbles::before{width:420px; height:420px; right:-120px; top:-100px; background:radial-gradient(circle at 30% 30%, #7b42ff, transparent 40%)}
+.bubbles::after{width:260px; height:260px; left:-80px; bottom:-80px; background:radial-gradient(circle at 60% 40%, #00d4ff, transparent 40%)}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-inner{flex-direction:column-reverse; align-items:stretch}
+  .hero-right{width:100%}
+  .lead{max-width:100%}
+  .timeline-item, .timeline-item.right{left:0; width:100%}
+  .timeline-line{left:8px; transform:none; height:100%}
+  .timeline-item .circle{left:-28px}
+  .about-cards{width:100%}
+  .header-inner{gap:12px}
+  .nav{display:none}
+  #btnMenu{display:block}
+}
+
+/* Show nav on large */
+@media (min-width:901px){
+  #btnMenu{display:none}
+}
+
+
+/*custom button*/ 
+
+.btn-whatsapp {
+  background: linear-gradient(45deg, #25d366, #128c7e);
+  color: #fff;
+  padding: 10px 18px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-whatsapp:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
